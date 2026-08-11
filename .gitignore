@@ -1,0 +1,12 @@
+.DS_Store
+.idea
+*.log
+tmp/
+
+# Nix / Nix Flakes outputs
+result
+result-*
+
+# direnv environment files
+.envrc
+.direnv/
