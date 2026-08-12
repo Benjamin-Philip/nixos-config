@@ -10,3 +10,6 @@ result-*
 # direnv environment files
 .envrc
 .direnv/
+
+# QEMU VM state
+*.qcow2

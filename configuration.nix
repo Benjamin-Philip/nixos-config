@@ -38,7 +38,7 @@
   # services.xserver.enable = true;
 
 
-  
+
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
@@ -85,6 +85,21 @@
   #   enableSSHSupport = true;
   # };
 
+  # VM-specific overrides (only applied when running via build-vm)
+  virtualisation.vmVariant = {
+    virtualisation = {
+      memorySize = 4096; # 4 GB RAM
+      cores = 4;
+      graphics = false;   # Disable QEMU display window
+      # resolution = { x = 1920; y = 1080; };
+
+      # Forward SSH port from VM (2222 on host -> 22 on VM)
+      forwardPorts = [
+        { from = "host"; host.port = 2222; guest.port = 22; }
+      ];
+    };
+  };
+
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
@@ -129,4 +144,3 @@
   system.stateVersion = "26.05"; # Did you read the comment?
 
 }
-
