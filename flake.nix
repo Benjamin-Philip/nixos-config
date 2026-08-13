@@ -50,7 +50,6 @@
       # NixOS configuration entrypoint
       # Available through 'nixos-rebuild --flake .#your-hostname'
       nixosConfigurations = {
-        # FIXME replace with your hostname
         rivendell = nixpkgs.lib.nixosSystem {
           specialArgs = {inherit inputs;};
           modules = [
@@ -63,10 +62,9 @@
       # Standalone home-manager configuration entrypoint
       # Available through 'home-manager --flake .#your-username@your-hostname'
       homeConfigurations = {
-        # FIXME replace with your username@hostname
         "ben@rivendell" = home-manager.lib.homeManagerConfiguration {
           # Home-manager requires 'pkgs' instance
-          pkgs = nixpkgs.legacyPackages.x86_64-linux; # FIXME replace x86_64-linux with your architecture
+          pkgs = pkgs;
           extraSpecialArgs = {inherit inputs;};
           modules = [
             # > Our main home-manager configuration file <

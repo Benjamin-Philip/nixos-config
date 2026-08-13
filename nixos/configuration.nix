@@ -61,8 +61,6 @@
     channel.enable = false;
   };
 
-  # FIXME: Add the rest of your current configuration
-
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
