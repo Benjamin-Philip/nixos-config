@@ -1,7 +1,6 @@
 # Edit this configuration file to define what should be installed on
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
 # Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
 {
   inputs,
@@ -73,16 +72,20 @@
     virtualisation = {
       memorySize = 4096; # 4 GB RAM
       cores = 4;
-      graphics = false;   # Disable QEMU display window
+      graphics = false; # Disable QEMU display window
       # resolution = { x = 1920; y = 1080; };
 
       # Forward SSH port from VM (2222 on host -> 22 on VM)
       forwardPorts = [
-        { from = "host"; host.port = 2222; guest.port = 22; }
+        {
+          from = "host";
+          host.port = 2222;
+          guest.port = 22;
+        }
       ];
     };
   };
-  
+
   # TODO: Set your hostname
   networking.hostName = "rivendell";
 
