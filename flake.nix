@@ -35,10 +35,6 @@
       # Formatter for your nix files, available through 'nix fmt'
       # Other options beside 'alejandra' include 'nixpkgs-fmt'
       formatter.${system} = pkgs.alejandra;
-      checks.${system}.formatting = pkgs.runCommand "check-formatting" {buildInputs = [pkgs.alejandra];} ''
-        alejandra --check ${self}
-        touch $out
-      '';
 
       # Reusable nixos modules you might want to export
       # These are usually stuff you would upstream into nixpkgs
@@ -72,5 +68,8 @@
           ];
         };
       };
+
+      # NixOS integration tests and flake checks
+      checks.${system} = import ./checks {inherit pkgs inputs;};
     });
 }
