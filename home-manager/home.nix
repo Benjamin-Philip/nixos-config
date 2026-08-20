@@ -44,11 +44,14 @@
     };
   };
 
-  # TODO: Set your username
   home = {
-    username = "your-username";
-    homeDirectory = "/home/your-username";
+    username = "ben";
+    homeDirectory = "/home/ben";
   };
+
+  xdg.enable = true;
+  xdg.userDirs.enable = true;
+  xdg.userDirs.createDirectories = true;
 
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;

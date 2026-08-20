@@ -2,10 +2,10 @@
   pkgs,
   inputs,
   ...
-}: let
-  tests = import ../tests {inherit pkgs inputs;};
+} @ moduleArgs: let
+  tests = import ../tests moduleArgs;
   regularChecks = {
-    formatting = import ./formatting.nix {inherit pkgs inputs;};
+    formatting = import ./formatting.nix moduleArgs;
   };
   checks = [tests regularChecks];
 in

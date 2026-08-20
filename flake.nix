@@ -25,9 +25,12 @@
   } @ inputs:
     flake-utils.lib.eachDefaultSystemPassThrough (system: let
       pkgs = nixpkgs.legacyPackages.${system};
+      lib = pkgs.lib;
+      config = {};
     in {
       # Your custom packages and modifications, exported as overlays
       overlays = import ./overlays {inherit inputs;};
+
       # Your custom packages
       # Accessible through 'nix build', 'nix shell', etc
       packages = import ./pkgs pkgs;
@@ -51,25 +54,12 @@
           modules = [
             # > Our main nixos configuration file <
             ./nixos/configuration.nix
-          ];
-        };
-      };
-
-      # Standalone home-manager configuration entrypoint
-      # Available through 'home-manager --flake .#your-username@your-hostname'
-      homeConfigurations = {
-        "ben@rivendell" = home-manager.lib.homeManagerConfiguration {
-          # Home-manager requires 'pkgs' instance
-          pkgs = pkgs;
-          extraSpecialArgs = {inherit inputs;};
-          modules = [
-            # > Our main home-manager configuration file <
-            ./home-manager/home.nix
+            home-manager.nixosModules.home-manager
           ];
         };
       };
 
       # NixOS integration tests and flake checks
-      checks.${system} = import ./checks {inherit pkgs inputs;};
+      checks.${system} = import ./checks {inherit config lib pkgs inputs;};
     });
 }
