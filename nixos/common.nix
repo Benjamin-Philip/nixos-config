@@ -40,8 +40,13 @@
       ];
       # TODO: Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
       extraGroups = ["wheel" "nix-home-manager-users"];
+
+      shell = pkgs.fish;
     };
   };
+
+  programs.fish.enable = true;
+  environment.shells = [pkgs.bash pkgs.fish];
 
   users.groups.nix-home-manager-users = {};
 

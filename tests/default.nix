@@ -6,8 +6,10 @@
   test-machine = {
     imports = [(import ../nixos/common.nix moduleArgs)];
   };
-  nixosTests = import ./nixos (moduleArgs // {inherit test-machine;});
+  args = moduleArgs // {inherit test-machine;};
+  nixosTests = import ./nixos args;
+  hmTests = import ./home-manager args;
   leafTests = {};
-  tests = [nixosTests leafTests];
+  tests = [nixosTests hmTests leafTests];
 in
   pkgs.lib.attrsets.mergeAttrsList tests
