@@ -74,5 +74,7 @@
         }
       ];
     };
+
+    services.getty.autologinUser = "ben";
   };
 }
