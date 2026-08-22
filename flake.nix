@@ -14,19 +14,22 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     flake-utils.url = "github:numtide/flake-utils";
+    treefmt-nix.url = "github:numtide/treefmt-nix";
   };
 
   outputs = {
     self,
     nixpkgs,
     home-manager,
-    flake-utils,
+      flake-utils,
+      treefmt-nix,
     ...
   } @ inputs:
     flake-utils.lib.eachDefaultSystemPassThrough (system: let
       pkgs = nixpkgs.legacyPackages.${system};
       lib = pkgs.lib;
       config = {};
+      treefmtEval = treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
     in {
       # Your custom packages and modifications, exported as overlays
       overlays = import ./overlays {inherit inputs;};
@@ -37,7 +40,7 @@
 
       # Formatter for your nix files, available through 'nix fmt'
       # Other options beside 'alejandra' include 'nixpkgs-fmt'
-      formatter.${system} = pkgs.alejandra;
+      formatter.${system} = treefmtEval.config.build.wrapper;
 
       # Reusable nixos modules you might want to export
       # These are usually stuff you would upstream into nixpkgs
@@ -60,6 +63,6 @@
       };
 
       # NixOS integration tests and flake checks
-      checks.${system} = import ./checks {inherit config lib pkgs inputs;};
+      checks.${system} = import ./checks {inherit self config lib pkgs inputs treefmtEval;};
     });
 }

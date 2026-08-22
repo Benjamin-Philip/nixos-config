@@ -1,11 +1,5 @@
 {
-  pkgs,
-  inputs,
+  self,
+  treefmtEval,
   ...
-}:
-pkgs.runCommand "check-formatting"
-{buildInputs = [pkgs.alejandra];}
-''
-  alejandra --check ${inputs.self}
-  touch $out
-''
+}: treefmtEval.config.build.check self
