@@ -8,6 +8,11 @@ def program_exists(program):
 
 machine.wait_for_unit("default.target")
 
+
+##############
+# Base Tests #
+##############
+
 with subtest("XDG correctly enabled"):
     directory_exists("/home/ben")
     directory_exists("/home/ben/Documents")
@@ -38,4 +43,102 @@ with subtest("shell configuration"):
         "zoxide",
     ]
     for tool in modern_cli_tools:
+        program_exists(tool)
+
+##################
+# SysAdmin Tests #
+##################
+
+with subtest("hardware tools"):
+    hardware_tools = [
+        "lspci",
+        "lsusb",
+        "i2cdump",
+        "lshw",
+        "dmidecode",
+        "hwloc-info",
+        "cpuid",
+        "sensors",
+        "powertop",
+        "tlp",
+        "edid-decode",
+        "clinfo",
+        "vulkaninfo",
+    ]
+    for tool in hardware_tools:
+        program_exists(tool)
+
+with subtest("networking tools"):
+    networking_tools = [
+        "gping",
+        "mtr",
+        "doggo",
+        "dig",
+        "nslookup",
+        "nmap",
+        "rustscan",
+        "httpie",
+        "curlie",
+        "xh",
+        "nc",
+        "socat",
+        "trip",
+    ]
+    for tool in networking_tools:
+        program_exists(tool)
+
+with subtest("monitoring tools"):
+    monitoring_tools = [
+        "procs",
+        "gdu",
+        "ncdu",
+        "iotop",
+        "bandwhich",
+        "nvtop",
+        "btop",
+        "htop",
+    ]
+    for tool in monitoring_tools:
+        program_exists(tool)
+
+with subtest("nix helpers"):
+    program_exists("nh")
+    program_exists("nvd")
+
+with subtest("processes tools"):
+    processes_tools = [
+        "pstree",
+        "fuser",
+        "killall",
+        "lsof",
+        "strace",
+        "ltrace",
+        "bpftrace",
+    ]
+    for tool in processes_tools:
+        program_exists(tool)
+
+with subtest("storage tools"):
+    storage_tools = [
+        "nvme",
+        "smartctl",
+        "gdisk",
+        "sgdisk",
+        "cgdisk",
+        "parted",
+        "btrfs",
+        "fatlabel",
+        "mke2fs",
+        "ntfslabel",
+        "xfs_copy",
+        "ddrescue",
+        "nwipe",
+        "testdisk",
+        "borg",
+        "rclone",
+        "restic",
+        "rsync",
+        "syncthing",
+    ]
+    for tool in storage_tools:
         program_exists(tool)
