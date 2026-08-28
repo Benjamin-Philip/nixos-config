@@ -2,6 +2,10 @@ def directory_exists(dir):
     machine.succeed(f"test -d {dir}")
 
 
+def file_exists(file):
+    machine.succeed(f"test -f {file}")
+
+
 def program_exists(program):
     machine.succeed(f"su -- ben -c 'which {program}'")
 
@@ -86,6 +90,13 @@ with subtest("networking tools"):
     ]
     for tool in networking_tools:
         program_exists(tool)
+
+    # trippy test
+    trippy_config = "/home/ben/.config/trippy/trippy.toml"
+    file_exists(trippy_config)
+    machine.succeed(
+        f"$(su -- ben -c 'which trip') -c {trippy_config} -m json -C 5 localhost"
+    )
 
 with subtest("monitoring tools"):
     monitoring_tools = [

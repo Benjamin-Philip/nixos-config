@@ -22,5 +22,7 @@
     socat
   ];
 
+  # TODO: Configure trippy
   programs.trippy.enable = true;
+  programs.trippy.settings.bindings.toggle-help = "h";
 }
