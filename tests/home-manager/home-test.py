@@ -49,6 +49,19 @@ with subtest("shell configuration"):
     for tool in modern_cli_tools:
         program_exists(tool)
 
+###############
+# Devel Tests #
+###############
+
+with subtest("git correctly enabled"):
+    program_exists("git")
+    file_exists("/home/ben/.config/git/config")
+
+with subtest("gh correctly enabled"):
+    program_exists("gh")
+    file_exists("/home/ben/.config/gh/config.yml")
+    file_exists("/home/ben/.config/gh/hosts.yml")
+
 ##################
 # SysAdmin Tests #
 ##################

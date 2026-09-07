@@ -19,6 +19,7 @@
     # ./nvim.nix
 
     ./base
+    ./devel
     ./sysadmin
   ];
 
