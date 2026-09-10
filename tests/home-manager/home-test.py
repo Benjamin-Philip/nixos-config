@@ -53,6 +53,8 @@ with subtest("shell configuration"):
 # Devel Tests #
 ###############
 
+# Core
+
 with subtest("git correctly enabled"):
     program_exists("git")
     file_exists("/home/ben/.config/git/config")
@@ -61,6 +63,16 @@ with subtest("gh correctly enabled"):
     program_exists("gh")
     file_exists("/home/ben/.config/gh/config.yml")
     file_exists("/home/ben/.config/gh/hosts.yml")
+
+# Emacs
+
+with subtest("doom emacs correctly enabled"):
+    program_exists("emacs")
+    program_exists("doom")
+    machine.succeed(
+        "su -- ben <<< \"doom doctor | grep -Pvqz 'There (are|is) \d+ (warning|error)(s)?\!'\""
+    )
+
 
 ##################
 # SysAdmin Tests #

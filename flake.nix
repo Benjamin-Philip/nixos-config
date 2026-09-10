@@ -13,6 +13,8 @@
     home-manager.url = "github:nix-community/home-manager/release-26.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    nix-doom-emacs-unstraightened.url = "github:marienz/nix-doom-emacs-unstraightened";
+
     flake-utils.url = "github:numtide/flake-utils";
     treefmt-nix.url = "github:numtide/treefmt-nix";
   };
@@ -21,8 +23,9 @@
     self,
     nixpkgs,
     home-manager,
-      flake-utils,
-      treefmt-nix,
+    nix-doom-emacs-unstraightened,
+    flake-utils,
+    treefmt-nix,
     ...
   } @ inputs:
     flake-utils.lib.eachDefaultSystemPassThrough (system: let
