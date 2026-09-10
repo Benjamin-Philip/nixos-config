@@ -91,35 +91,6 @@
 
 (setq company-show-numbers t)
 
-;; ;; Increase preview width
-;; (plist-put org-latex-preview-appearance-options :page-width 0.8)
-
-;; ;; Turn on `org-latex-preview-mode', it's built into Org and much faster/more
-;; ;; featured than org-fragtog. (Remember to turn off/uninstall org-fragtog.)
-;; (add-hook 'org-mode-hook 'org-latex-preview-mode)
-
-;; ;; Block C-n, C-p etc from opening up previews when using `org-latex-preview-mode'
-;; (setq org-latex-preview-ignored-commands
-;;       '(next-line previous-line mwheel-scroll
-;;         scroll-up-command scroll-down-command))
-
-;; ;; Enable consistent equation numbering
-;; (setq org-latex-preview-numbered t)
-
-;; ;; Bonus: Turn on live previews.  This shows you a live preview of a LaTeX
-;; ;; fragment and updates the preview in real-time as you edit it.
-;; ;; To preview only environments, set it to '(block edit-special) instead
-;; (setq org-latex-preview-live t)
-
-;; ;; More immediate live-previews -- the default delay is 1 second
-;; (setq org-latex-preview-live-debounce 0.0125)
-
-(use-package! ob-sagemath
-  :config (setq org-babel-default-header-args:sage '((:session . t)
-                                                     (:results . "output"))))
-
-(setq org-ditaa-jar-path "/usr/bin/ditaa")
-
 (setq-default gptel-model 'gpt-4.1 gptel-backend (gptel-make-gh-copilot "Copilot"))
 
 (use-package! eglot
