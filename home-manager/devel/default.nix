@@ -4,5 +4,6 @@
   imports = [
     ./core
     ./emacs
+    ./lang
   ];
 }
