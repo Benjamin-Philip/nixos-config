@@ -87,6 +87,12 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
+;; Emacs needs a POSIX shell. Use bash internally and fish for terminals:
+(setq shell-file-name (executable-find "bash"))
+(let ((fish (executable-find "bash")))
+  (setq vterm-shell fish)
+  (setq explicit-shell-file-name fish))
+
 (set-fontset-font "fontset-default" 'malayalam "Noto Sans Malayalam")
 
 (setq company-show-numbers t)
