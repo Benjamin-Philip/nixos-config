@@ -8,6 +8,8 @@
   imports = [
     # Import home-manager's NixOS module
     inputs.home-manager.nixosModules.home-manager
+
+    ./desktop
   ];
 
   nix = {
@@ -24,9 +26,20 @@
     channel.enable = false;
   };
 
-  # TODO: Set your hostname
-  networking.hostName = "rivendell";
+  networking.hostName = "rivendell"; # Define your hostname.
+  networking.wireless.enable = true; # Enables wireless support via wpa_supplicant.
 
+  # Configure network proxy if necessary
+  # networking.proxy.default = "http://user:password@proxy:port/";
+  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+
+  # Enable networking
+  networking.networkmanager.enable = true;
+
+  # Set your time zone.
+  services.automatic-timezoned.enable = true;
+  time.timeZone = null;
+  
   # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
   users.users = {
     ben = {
@@ -39,7 +52,7 @@
         # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
       ];
       # TODO: Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
-      extraGroups = ["wheel" "nix-home-manager-users"];
+      extraGroups = ["wheel" "networkmanager"];
 
       shell = pkgs.fish;
     };
@@ -47,8 +60,6 @@
 
   programs.fish.enable = true;
   environment.shells = [pkgs.bash pkgs.fish];
-
-  users.groups.nix-home-manager-users = {};
 
   home-manager = {
     extraSpecialArgs = {inherit inputs;};
