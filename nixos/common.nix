@@ -70,6 +70,7 @@
 
     enableLegacyProfileManagement = false;
     useUserPackages = true;
+    backupFileExtension = "bak";
   };
 
   # This setups a SSH server. Very important if you're setting up a headless system.
