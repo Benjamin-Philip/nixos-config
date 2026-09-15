@@ -4,7 +4,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     # Import home-manager's NixOS module
     inputs.home-manager.nixosModules.home-manager
@@ -19,8 +20,14 @@
       # Opinionated: disable global registry
       flake-registry = "";
 
-      allowed-users = ["@wheel" "@nix-home-manager-users"];
-      trusted-users = ["root" "@wheel"];
+      allowed-users = [
+        "@wheel"
+        "@nix-home-manager-users"
+      ];
+      trusted-users = [
+        "root"
+        "@wheel"
+      ];
     };
     # Opinionated: disable channels
     channel.enable = false;
@@ -39,7 +46,7 @@
   # Set your time zone.
   services.automatic-timezoned.enable = true;
   time.timeZone = null;
-  
+
   # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
   users.users = {
     ben = {
@@ -52,17 +59,23 @@
         # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
       ];
       # TODO: Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
-      extraGroups = ["wheel" "networkmanager"];
+      extraGroups = [
+        "wheel"
+        "networkmanager"
+      ];
 
       shell = pkgs.fish;
     };
   };
 
   programs.fish.enable = true;
-  environment.shells = [pkgs.bash pkgs.fish];
+  environment.shells = [
+    pkgs.bash
+    pkgs.fish
+  ];
 
   home-manager = {
-    extraSpecialArgs = {inherit inputs;};
+    extraSpecialArgs = { inherit inputs; };
     users = {
       # Import your home-manager configuration
       ben = import ../home-manager/home.nix;
