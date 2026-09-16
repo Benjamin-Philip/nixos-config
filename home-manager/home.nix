@@ -6,7 +6,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   # You can import other home-manager modules here
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
@@ -20,6 +21,7 @@
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
 
+    ./apps
     ./base
     ./devel
     ./sysadmin
@@ -35,6 +37,8 @@
 
       # You can also add overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
+
+      inputs.nix-firefox-addons.overlays.default
 
       # Or define it inline, for example:
       # (final: prev: {

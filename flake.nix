@@ -15,6 +15,8 @@
 
     nix-doom-emacs-unstraightened.url = "github:marienz/nix-doom-emacs-unstraightened";
 
+    nix-firefox-addons.url = "github:osipog/nix-firefox-addons";
+
     flake-utils.url = "github:numtide/flake-utils";
     treefmt-nix.url = "github:numtide/treefmt-nix";
   };
