@@ -8,7 +8,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   # You can import other NixOS modules here
   imports = [
     # If you want to use modules your own flake exports (from modules/nixos):
@@ -63,7 +64,10 @@
       memorySize = 4096; # 4 GB RAM
       cores = 4;
       graphics = true;
-      resolution = { x = 1920; y = 1080; };
+      resolution = {
+        x = 1920;
+        y = 1080;
+      };
 
       # Forward SSH port from VM (2222 on host -> 22 on VM)
       forwardPorts = [

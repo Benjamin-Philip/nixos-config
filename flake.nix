@@ -21,53 +21,67 @@
     treefmt-nix.url = "github:numtide/treefmt-nix";
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    home-manager,
-    nix-doom-emacs-unstraightened,
-    flake-utils,
-    treefmt-nix,
-    ...
-  } @ inputs:
-    flake-utils.lib.eachDefaultSystemPassThrough (system: let
-      pkgs = nixpkgs.legacyPackages.${system};
-      lib = pkgs.lib;
-      config = {};
-      treefmtEval = treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
-    in {
-      # Your custom packages and modifications, exported as overlays
-      overlays = import ./overlays {inherit inputs;};
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      nix-doom-emacs-unstraightened,
+      flake-utils,
+      treefmt-nix,
+      ...
+    }@inputs:
+    flake-utils.lib.eachDefaultSystemPassThrough (
+      system:
+      let
+        pkgs = nixpkgs.legacyPackages.${system};
+        lib = pkgs.lib;
+        config = { };
+        treefmtEval = treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
+      in
+      {
+        # Your custom packages and modifications, exported as overlays
+        overlays = import ./overlays { inherit inputs; };
 
-      # Your custom packages
-      # Accessible through 'nix build', 'nix shell', etc
-      packages = import ./pkgs pkgs;
+        # Your custom packages
+        # Accessible through 'nix build', 'nix shell', etc
+        packages = import ./pkgs pkgs;
 
-      # Formatter for your nix files, available through 'nix fmt'
-      # Other options beside 'alejandra' include 'nixpkgs-fmt'
-      formatter.${system} = treefmtEval.config.build.wrapper;
+        # Formatter for your nix files, available through 'nix fmt'
+        # Other options beside 'alejandra' include 'nixpkgs-fmt'
+        formatter.${system} = treefmtEval.config.build.wrapper;
 
-      # Reusable nixos modules you might want to export
-      # These are usually stuff you would upstream into nixpkgs
-      nixosModules = import ./modules/nixos;
-      # Reusable home-manager modules you might want to export
-      # These are usually stuff you would upstream into home-manager
-      homeManagerModules = import ./modules/home-manager;
+        # Reusable nixos modules you might want to export
+        # These are usually stuff you would upstream into nixpkgs
+        nixosModules = import ./modules/nixos;
+        # Reusable home-manager modules you might want to export
+        # These are usually stuff you would upstream into home-manager
+        homeManagerModules = import ./modules/home-manager;
 
-      # NixOS configuration entrypoint
-      # Available through 'nixos-rebuild --flake .#your-hostname'
-      nixosConfigurations = {
-        rivendell = nixpkgs.lib.nixosSystem {
-          specialArgs = {inherit inputs;};
-          modules = [
-            # > Our main nixos configuration file <
-            ./nixos/configuration.nix
-            home-manager.nixosModules.home-manager
-          ];
+        # NixOS configuration entrypoint
+        # Available through 'nixos-rebuild --flake .#your-hostname'
+        nixosConfigurations = {
+          rivendell = nixpkgs.lib.nixosSystem {
+            specialArgs = { inherit inputs; };
+            modules = [
+              # > Our main nixos configuration file <
+              ./nixos/configuration.nix
+              home-manager.nixosModules.home-manager
+            ];
+          };
         };
-      };
 
-      # NixOS integration tests and flake checks
-      checks.${system} = import ./checks {inherit self config lib pkgs inputs treefmtEval;};
-    });
+        # NixOS integration tests and flake checks
+        checks.${system} = import ./checks {
+          inherit
+            self
+            config
+            lib
+            pkgs
+            inputs
+            treefmtEval
+            ;
+        };
+      }
+    );
 }
