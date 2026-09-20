@@ -58,6 +58,20 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # Use the plymouth boot screen
+  boot = {
+    plymouth.enable = true;
+
+    # Enable "Silent boot"
+    consoleLogLevel = 3;
+    initrd.verbose = false;
+    kernelParams = [
+      "quiet"
+      "rd.udev.log_level=3"
+      "rd.systemd.show_status=auto"
+    ];
+  };
+
   # VM-specific overrides (only applied when running via build-vm)
   virtualisation.vmVariant = {
     virtualisation = {
