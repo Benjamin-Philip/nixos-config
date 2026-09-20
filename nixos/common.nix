@@ -47,6 +47,16 @@
   services.automatic-timezoned.enable = true;
   time.timeZone = null;
 
+  # bluetooth
+  # TODO: test bluetooth config
+  hardware.bluetooth = {
+    enable = true;
+    # Show battery charge of devices
+    settings.General.Experimental = true;
+  };
+
+  services.blueman.enable = true;
+
   # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
   users.users = {
     ben = {

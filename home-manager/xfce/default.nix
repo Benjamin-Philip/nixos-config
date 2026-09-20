@@ -17,4 +17,8 @@
     xfce4-weather-plugin
     xfce4-pulseaudio-plugin
   ];
+
+  # bluetooth config
+  services.blueman-applet.enable = true;
+  services.mpris-proxy.enable = true;
 }
