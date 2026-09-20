@@ -70,6 +70,8 @@
     <property name="plugin-6" type="string" value="systray">
       <property name="square-icons" type="bool" value="true"/>
       <property name="known-legacy-items" type="array">
+        <value type="string" value="wi-fi network connection “kryptic” active: kryptic (74%)"/>
+        <value type="string" value="wi-fi network connection “kryptic” active: kryptic (73%)"/>
         <value type="string" value="wi-fi network connection “kryptic” active: kryptic (61%)"/>
         <value type="string" value="wi-fi network connection “kryptic” active: kryptic (60%)"/>
       </property>
@@ -131,7 +133,12 @@
     <property name="plugin-18" type="string" value="directorymenu">
       <property name="base-directory" type="string" value="/home/ben"/>
     </property>
-    <property name="plugin-19" type="string" value="whiskermenu"/>
+    <property name="plugin-19" type="string" value="whiskermenu">
+      <property name="recent" type="array">
+        <value type="string" value="emacsclient.desktop"/>
+        <value type="string" value="xfce-settings-manager.desktop"/>
+      </property>
+    </property>
     <property name="plugin-20" type="string" value="weather">
       <property name="location" type="empty">
         <property name="name" type="string" value="Bengaluru, Bangalore North"/>
