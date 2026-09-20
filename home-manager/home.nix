@@ -25,6 +25,7 @@
     ./base
     ./devel
     ./sysadmin
+    ./xfce
   ];
 
   nixpkgs = {
