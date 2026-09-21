@@ -15,6 +15,9 @@
 
     nix-doom-emacs-unstraightened.url = "github:marienz/nix-doom-emacs-unstraightened";
 
+    stylix.url = "github:nix-community/stylix/release-26.05";
+    stylix.inputs.nixpkgs.follows = "nixpkgs";
+
     nix-firefox-addons.url = "github:osipog/nix-firefox-addons";
 
     flake-utils.url = "github:numtide/flake-utils";
@@ -27,6 +30,7 @@
       nixpkgs,
       home-manager,
       nix-doom-emacs-unstraightened,
+      stylix,
       flake-utils,
       treefmt-nix,
       ...
@@ -67,6 +71,7 @@
               # > Our main nixos configuration file <
               ./nixos/configuration.nix
               home-manager.nixosModules.home-manager
+              stylix.nixosModules.stylix
             ];
           };
         };

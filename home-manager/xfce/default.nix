@@ -21,4 +21,13 @@
   # bluetooth config
   services.blueman-applet.enable = true;
   services.mpris-proxy.enable = true;
+
+  # stylix wallpaper
+  xfconf.settings.xfce4-desktop = {
+    "backdrop/screen0/monitoreDP-1/workspace0/image-style" = 5;
+    "backdrop/screen0/monitoreDP-1/workspace0/last-image" = "${config.stylix.image}";
+
+    "backdrop/screen0/monitorHDMI-1/workspace0/image-style" = 5;
+    "backdrop/screen0/monitorHDMI-1/workspace0/last-image" = "${config.stylix.image}";
+  };
 }

@@ -31,4 +31,6 @@
       };
     };
   };
+
+  stylix.targets.firefox.profileNames = [ "main" ];
 }
