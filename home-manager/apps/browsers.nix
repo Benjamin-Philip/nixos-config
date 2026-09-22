@@ -26,11 +26,16 @@
         "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
         "browser.newtabpage.activity-stream.feeds.section.topstories" = false;
 
+        # Force stylix theme
+        "extensions.activeThemeID" = "firefox-color@mozilla.org";
+
         # auto enable extensions
         "extensions.autoDisableScopes" = 0;
       };
     };
   };
 
+  stylix.targets.firefox.colorTheme.enable = true;
+  programs.firefox.profiles.main.extensions.force = true;
   stylix.targets.firefox.profileNames = [ "main" ];
 }
