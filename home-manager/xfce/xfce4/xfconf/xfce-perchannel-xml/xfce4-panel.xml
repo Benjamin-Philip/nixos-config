@@ -70,6 +70,17 @@
     <property name="plugin-6" type="string" value="systray">
       <property name="square-icons" type="bool" value="true"/>
       <property name="known-legacy-items" type="array">
+        <value type="string" value="wi-fi network connection “kryptic” active: kryptic (83%)"/>
+        <value type="string" value="wi-fi network connection “kryptic” active: kryptic (48%)"/>
+        <value type="string" value="wi-fi network connection “kryptic” active: kryptic (51%)"/>
+        <value type="string" value="wi-fi network connection “kryptic” active: kryptic (52%)"/>
+        <value type="string" value="wi-fi network connection “kryptic” active: kryptic (69%)"/>
+        <value type="string" value="wi-fi network connection “kryptic” active: kryptic (70%)"/>
+        <value type="string" value="wi-fi network connection “kryptic” active: kryptic (71%)"/>
+        <value type="string" value="wi-fi network connection “kryptic” active: kryptic (79%)"/>
+        <value type="string" value="wi-fi network connection “kryptic” active: kryptic (68%)"/>
+        <value type="string" value="wi-fi network connection “kryptic” active: kryptic (66%)"/>
+        <value type="string" value="wi-fi network connection “kryptic” active: kryptic (67%)"/>
         <value type="string" value="blueman"/>
         <value type="string" value="wi-fi network connection “kryptic” active: kryptic (59%)"/>
         <value type="string" value="wi-fi network connection “kryptic” active: kryptic (74%)"/>
@@ -137,10 +148,16 @@
     </property>
     <property name="plugin-19" type="string" value="whiskermenu">
       <property name="recent" type="array">
+        <value type="string" value="qv4l2.desktop"/>
+        <value type="string" value="cups.desktop"/>
+        <value type="string" value="drracket.desktop"/>
+        <value type="string" value="math.desktop"/>
+        <value type="string" value="org.xfce.ristretto.desktop"/>
+        <value type="string" value="qalculate-gtk.desktop"/>
+        <value type="string" value="kvantummanager.desktop"/>
+        <value type="string" value="btop.desktop"/>
         <value type="string" value="writer.desktop"/>
         <value type="string" value="org.xfce.Parole.desktop"/>
-        <value type="string" value="emacsclient.desktop"/>
-        <value type="string" value="xfce-settings-manager.desktop"/>
       </property>
     </property>
     <property name="plugin-20" type="string" value="weather">
@@ -180,7 +197,7 @@
     </property>
     <property name="plugin-21" type="string" value="pulseaudio">
       <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
-      <property name="known-players" type="string" value="firefox"/>
+      <property name="known-players" type="string" value="firefox;iptvnator"/>
     </property>
     <property name="plugin-22" type="string" value="power-manager-plugin"/>
     <property name="plugin-23" type="string" value="separator">

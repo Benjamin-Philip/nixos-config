@@ -8,9 +8,11 @@
       <value type="string" value="org.freedesktop.network-manager-applet"/>
       <value type="string" value="Xfce volume control"/>
       <value type="string" value="xfce4-power-manager"/>
+      <value type="string" value="xfce4-settings-helper"/>
     </property>
   </property>
   <property name="date-time-custom-format" type="string" value="%a %H:%M:%S"/>
   <property name="notification-log" type="bool" value="true"/>
   <property name="log-level" type="string" value="always"/>
+  <property name="do-not-disturb" type="bool" value="true"/>
 </channel>
