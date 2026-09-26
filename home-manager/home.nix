@@ -23,6 +23,7 @@
 
     ./apps
     ./base
+    ./comms
     ./devel
     ./sysadmin
     ./xfce

@@ -12,7 +12,7 @@
 (setq mail-user-agent 'notmuch-user-agent
       message-send-mail-function 'message-send-mail-with-sendmail
       sendmail-program (executable-find "gmi")
-      message-sendmail-extra-arguments '("send" "--quiet" "-C" "~/.mail/account.gmail"))
+      message-sendmail-extra-arguments '("send" "--quiet" "-C" "~/Maildir/personal"))
 
 (setq org-msg-startup "hidestars indent inlineimages"
       org-msg-default-alternatives '((new . (text html))

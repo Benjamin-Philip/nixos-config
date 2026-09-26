@@ -23,6 +23,8 @@
         <value type="int" value="6"/>
         <value type="int" value="9"/>
         <value type="int" value="20"/>
+        <value type="int" value="27"/>
+        <value type="int" value="1"/>
         <value type="int" value="23"/>
         <value type="int" value="26"/>
         <value type="int" value="28"/>
@@ -211,6 +213,10 @@
     </property>
     <property name="plugin-26" type="string" value="notification-plugin"/>
     <property name="plugin-28" type="string" value="separator">
+      <property name="style" type="uint" value="0"/>
+    </property>
+    <property name="plugin-1" type="string" value="mailwatch"/>
+    <property name="plugin-27" type="string" value="separator">
       <property name="style" type="uint" value="0"/>
     </property>
   </property>
