@@ -1,12 +1,12 @@
-app=none
+app=ristretto
 custom_action_command=none
 last_user=
 last_extension=png
-show_in_folder=false
-screenshot_dir=file:///home/ben/Pictures
+show_in_folder=true
+screenshot_dir=file:/home/ben/Pictures/Screenshots
 action=1
 delay=0
-region=1
-show_mouse=1
-show_border=1
+region=2
+show_mouse=0
+show_border=0
 

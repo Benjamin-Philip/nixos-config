@@ -14,5 +14,5 @@
   <property name="date-time-custom-format" type="string" value="%a %H:%M:%S"/>
   <property name="notification-log" type="bool" value="true"/>
   <property name="log-level" type="string" value="always"/>
-  <property name="do-not-disturb" type="bool" value="true"/>
+  <property name="do-not-disturb" type="bool" value="false"/>
 </channel>
