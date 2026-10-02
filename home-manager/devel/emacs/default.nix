@@ -1,4 +1,10 @@
-{ config, lib, pkgs, inputs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   programs.doom-emacs.enable = true;
@@ -15,5 +21,11 @@
 
     # :tools docker
     dockfmt
+
+    # :app everywhere
+    xclip
+    xdotool
+    xprop
+    xwininfo
   ];
 }
