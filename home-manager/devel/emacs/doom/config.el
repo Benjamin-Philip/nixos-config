@@ -113,3 +113,7 @@
             ;; include *Code-Review* buffer into current workspace
             (persp-add-buffer (current-buffer))))
 (with-eval-after-load 'code-review (require 'ghub-legacy))
+
+;; epg
+(after! plstore (add-to-list 'plstore-encrypt-to "A590EA9C"))
+(setq epg-pinentry-mode 'loopback)
