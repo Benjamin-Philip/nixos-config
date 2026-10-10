@@ -52,7 +52,7 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
+(setq org-directory "~/Documents/org/")
 
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
@@ -117,3 +117,37 @@
 ;; epg
 (after! plstore (add-to-list 'plstore-encrypt-to "A590EA9C"))
 (setq epg-pinentry-mode 'loopback)
+
+;; org-caldav
+(defun ben/caldav-file (cal file)
+  (file-name-concat org-directory "caldav" cal file))
+
+(defun ben/caldav-files (cal files)
+  (mapcar (lambda (file) (ben/caldav-file cal file)) files))
+
+(defun ben/caldav-dirs (cals)
+  (mapcar (lambda (cal) (file-name-concat org-directory "caldav" cal)) cals))
+
+;; TODO: replace with sops-nix
+(load (expand-file-name "~/Documents/google-oauth-secret.el"))
+
+(after! org-caldav
+  (setq org-caldav-url 'google
+        org-caldav-oauth2-client-id ben/google-oauth-client-id
+        org-caldav-oauth2-client-secret ben/google-oauth-client-secret)
+
+
+  (setq org-caldav-calendars
+        `((:calendar-id "benjamin.philip495%40gmail.com"
+           :files ,(ben/caldav-files "primary" '("current.org"))
+           :inbox ,(ben/caldav-file "primary" "inbox.org"))
+          (:calendar-id "f38d35fac3b4f7c73be34204fac9caaf07aba6dd5f8a5a7cba6df8a8fb5ad96f@group.calendar.google.com"
+           :files ,(ben/caldav-files "college" '("current.org"))
+           :inbox ,(ben/caldav-file "college" "inbox.org")))))
+
+(after! org
+  (setq org-agenda-files (append org-agenda-files (ben/caldav-dirs '("primary" "college")))
+        org-icalendar-timezone "Asia/Kolkata"
+        org-refile-use-outline-path 'full-file-path
+        org-archive-location "archive.org::datetree/"))
+
