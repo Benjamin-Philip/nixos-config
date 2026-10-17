@@ -11,7 +11,11 @@ configs:
       y: 0
       width: 1920
       height: 1080
-  icons: {}
+  icons:
+    "5270CD4370CD2F13":
+      row: 0
+      col: 0
+      last_seen: 1791285479361682
 - level: 0
   monitors:
   - id: "e53841fc748b255f1bc9ecd371ad0819d9c64203"
@@ -28,6 +32,18 @@ configs:
     "trash:///":
       row: 2
       col: 0
+    "smb://[fdaf:8d51:a33b:ac5c:76e6:e2ff:fe27:e3b9]/books/":
+      row: 3
+      col: 0
+      last_seen: 1791300745626914
+    "smb://[fdaf:8d51:a33b:ac5c:76e6:e2ff:fe27:e3b9]/print$/":
+      row: 4
+      col: 0
+      last_seen: 1791300745630779
     "/home/ben":
       row: 0
       col: 0
+    "smb://[fdaf:8d51:a33b:ac5c:76e6:e2ff:fe27:e3b9]/photos/":
+      row: 5
+      col: 0
+      last_seen: 1791300745635163
