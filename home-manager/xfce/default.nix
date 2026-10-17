@@ -16,7 +16,6 @@
     xfce4-whiskermenu-plugin
     xfce4-weather-plugin
     xfce4-pulseaudio-plugin
-    xfce4-mailwatch-plugin
   ];
 
   # bluetooth config
