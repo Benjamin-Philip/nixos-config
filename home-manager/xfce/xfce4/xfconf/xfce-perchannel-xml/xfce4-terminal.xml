@@ -2,4 +2,5 @@
 
 <channel name="xfce4-terminal" version="1.0">
   <property name="command-login-shell" type="bool" value="false"/>
+  <property name="shortcuts-no-mnemonics" type="bool" value="true"/>
 </channel>
