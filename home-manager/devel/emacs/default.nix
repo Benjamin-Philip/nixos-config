@@ -10,6 +10,7 @@
   programs.doom-emacs.enable = true;
   programs.doom-emacs.emacs = pkgs.emacs-gtk;
   programs.doom-emacs.doomDir = ./doom;
+  services.emacs.enable = true;
 
   home.packages = with pkgs; [
     # :core
