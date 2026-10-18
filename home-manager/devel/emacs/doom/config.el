@@ -135,7 +135,24 @@
           ("f38d35fac3b4f7c73be34204fac9caaf07aba6dd5f8a5a7cba6df8a8fb5ad96f@group.calendar.google.com"
            . ,(ben/org-dir-file "college.org")))))
 
+(use-package! org-todoist
+  :init
+  ;; TODO: replace with sops-nix
+  (load! "todoist-api-token.el" org-directory)
+  ;; required to handle differences between org and todoist
+  ;; see org-todoist readme
+  (add-to-list 'safe-local-variable-values '(org-list-indent-offset . 2))
+
+  :config
+  (setq org-todoist-api-token ben/todoist-api-token
+        org-todoist-deleted-keyword "KILL")
+  (org-todoist-background-sync))
+
 (after! org
   (setq org-icalendar-timezone "Asia/Kolkata"
-        org-refile-use-outline-path 'full-file-path))
-
+        org-refile-use-outline-path 'full-file-path
+        ;; Match todoist's 4 priority structure
+        org-lowest-priority ?D
+        org-default-priority ?D
+        org-priority-faces
+        '((?A . error) (?B . warning) (?C . success) (?D . shadow))))
