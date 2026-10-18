@@ -55,5 +55,4 @@
 (package! yasnippet-snippets)
 
 (package! org-msg)
-(package! org-caldav)
-(package! oauth2 :pin "ff3b40b5e989621433a92ae9b59b971b841d6a99")
+(package! org-gcal)
