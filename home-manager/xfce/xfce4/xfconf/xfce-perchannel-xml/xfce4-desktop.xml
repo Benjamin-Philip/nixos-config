@@ -6,13 +6,13 @@
     <property name="screen0" type="empty">
       <property name="monitoreDP-1" type="empty">
         <property name="workspace0" type="empty">
-          <property name="last-image" type="string" value="/nix/store/sw7qlgmgvgxh2lf66svbvyw0c6aq1wq9-wallpaper.png"/>
+          <property name="last-image" type="string" value="/nix/store/874njx1h542m54190jqmla20kkpyx9sc-wallpaper.png"/>
           <property name="image-style" type="int" value="5"/>
         </property>
       </property>
       <property name="monitorHDMI-1" type="empty">
         <property name="workspace0" type="empty">
-          <property name="last-image" type="string" value="/nix/store/sw7qlgmgvgxh2lf66svbvyw0c6aq1wq9-wallpaper.png"/>
+          <property name="last-image" type="string" value="/nix/store/874njx1h542m54190jqmla20kkpyx9sc-wallpaper.png"/>
           <property name="image-style" type="int" value="5"/>
         </property>
       </property>
