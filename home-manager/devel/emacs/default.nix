@@ -18,7 +18,13 @@
     nerd-fonts.symbols-only
 
     # :checkers spell
-    hunspell
+    (hunspellWithDicts (
+      with pkgs.hunspellDicts;
+      [
+        en_GB-large
+        en_US-large
+      ]
+    ))
 
     # :tools docker
     dockfmt
