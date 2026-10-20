@@ -12,5 +12,6 @@
     ./document-viewers.nix
     ./office-suite.nix
     ./photoshop.nix
+    ./zotero.nix
   ];
 }
