@@ -55,6 +55,7 @@
 (package! yasnippet-snippets)
 
 (package! org-msg)
+
 (package! org-gcal)
 (package! org-todoist
   :recipe (:host github
@@ -62,3 +63,5 @@
            :branch "main"
            :files ("org-todoist.el"))
   :pin "1fd647fcf3bee0633b2cd99e5e4e6870e91caaee")
+
+(package! org-roam-ui)
