@@ -156,3 +156,5 @@
         org-default-priority ?D
         org-priority-faces
         '((?A . error) (?B . warning) (?C . success) (?D . shadow))))
+
+(after! citar (setopt citar-bibliography '("~/Documents/bibliography.bib")))
