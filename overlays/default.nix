@@ -1,6 +1,6 @@
 # This file defines overlays
 # These are arbitrary named and just some conventions I use, you can name then whenever and/or make as many as you want
-{inputs, ...}: {
+{ inputs, ... }: {
   # This one brings our custom packages from the 'pkgs' directory
   additions = final: _prev: import ../pkgs final.pkgs;
 
@@ -14,9 +14,9 @@
   };
 
   # When applied, the unstable nixpkgs set (declared in the flake inputs) will
-  # be accessible through 'pkgs.unstablePkgs'
+  # be accessible through 'pkgs.unstable'
   unstable-packages = final: _prev: {
-    unstablePkgs = import inputs.nixpkgs-unstable {
+    unstable = import inputs.nixpkgs-unstable {
       system = final.stdenv.hostPlatform.system;
       config.allowUnfree = true;
     };
