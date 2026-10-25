@@ -1,10 +1,16 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   imports = [
     ./cc.nix
     ./elixir.nix
     ./erlang.nix
+    ./latex.nix
     ./markdown.nix
     ./nix.nix
     ./org.nix
