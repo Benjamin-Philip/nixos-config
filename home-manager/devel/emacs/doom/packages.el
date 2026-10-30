@@ -65,3 +65,6 @@
   :pin "1fd647fcf3bee0633b2cd99e5e4e6870e91caaee")
 
 (package! org-roam-ui)
+
+;; ai
+(package! minuet)

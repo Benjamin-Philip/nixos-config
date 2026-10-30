@@ -11,5 +11,6 @@
     ./base.nix
     ./display-server.nix
     ./stylix.nix
+    ./ollama.nix
   ];
 }

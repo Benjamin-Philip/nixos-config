@@ -97,8 +97,6 @@
 
 (setq company-show-numbers t)
 
-(setq-default gptel-model 'gpt-4.1 gptel-backend (gptel-make-gh-copilot "Copilot"))
-
 (use-package! eglot
   :ensure nil
 
@@ -175,3 +173,58 @@
         org-roam-ui-follow t
         org-roam-ui-update-on-save t
         org-roam-ui-open-on-start t))
+
+;; ai
+
+(use-package gptel
+  :init
+  (gptel-make-ollama "Ollama"
+    :host "localhost:11434"
+    :stream t
+    :models '(qwen2.5-coder:1.5b-base qwen3.5:9b deepseek-r1:7b phi4-mini))
+  (gptel-make-gh-copilot "Copilot"))
+
+;; Add ollama qwen2.5-coder:1.5b-base to gptel
+
+(use-package minuet
+  :init
+  (bind-keys :prefix-map minuet-map :prefix "C-c j")
+  :bind
+  (
+   :map minuet-map
+   ;; keymap to invoke minuet
+   ("y" . #'minuet-complete-with-minibuffer)
+   ("i" . #'minuet-show-suggestion)
+   ("c" . #'minuet-configure-provider)
+
+   :map minuet-active-mode-map
+   ;; These keymaps activate only when a minuet suggestion is displayed in the current buffer
+   ("M-p" . #'minuet-previous-suggestion) ;; invoke completion or cycle to next completion
+   ("M-n" . #'minuet-next-suggestion) ;; invoke completion or cycle to previous completion
+   ("M-A" . #'minuet-accept-suggestion) ;; accept whole completion
+   ;; Accept the first line of completion, or N lines with a numeric-prefix:
+   ;; e.g. C-u 2 M-a will accepts 2 lines of completion.
+   ("M-a" . #'minuet-accept-suggestion-line)
+   ;; Accept the first word of completion, or N words with a numeric-prefix:
+   ;; e.g. C-u 2 M-w will accepts 2 words of completion.
+   ("M-w" . #'minuet-accept-suggestion-word)
+   ("M-e" . #'minuet-dismiss-suggestion))
+
+  :config
+  (setq minuet-provider 'openai-fim-compatible)
+  (setq minuet-n-completions 1) ; recommended for Local LLM for resource saving
+  ;; I recommend beginning with a small context window size and incrementally
+  ;; expanding it, depending on your local computing power. A context window
+  ;; of 512, serves as an good starting point to estimate your computing
+  ;; power. Once you have a reliable estimate of your local computing power,
+  ;; you should adjust the context window to a larger value.
+  (setq minuet-context-window 512)
+  (plist-put minuet-openai-fim-compatible-options :end-point "http://localhost:11434/v1/completions")
+  ;; an arbitrary non-null environment variable as placeholder.
+  ;; For Windows users, TERM may not be present in environment variables.
+  ;; Consider using APPDATA instead.
+  (plist-put minuet-openai-fim-compatible-options :name "Ollama")
+  (plist-put minuet-openai-fim-compatible-options :api-key "TERM")
+  (plist-put minuet-openai-fim-compatible-options :model "qwen2.5-coder:1.5b-base")
+
+  (minuet-set-optional-options minuet-openai-fim-compatible-options :max_tokens 56))
