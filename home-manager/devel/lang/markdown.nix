@@ -1,6 +1,14 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   # TODO: add tests
-  home.packages = with pkgs; [pandoc];
+  home.packages = with pkgs; [
+    pandoc
+    hugo
+  ];
 }
